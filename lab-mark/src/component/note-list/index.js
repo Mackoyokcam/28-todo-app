@@ -9,6 +9,7 @@ class NoteList extends React.Component {
           <NoteItem
             note={note}
             removeNote={this.props.removeNote}
+            updateNote={this.props.updateNote}
             key={i}
           />
         )}

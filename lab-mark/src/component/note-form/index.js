@@ -1,14 +1,18 @@
 import React from 'react'
 
+let emptyState = {
+  title: '',
+  content: '',
+}
+
 class NoteForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      title: '',
-      content: '',
-    }
+    let {notes} = props
+    this.state = notes ? notes : emptyState
 
+    // Bounded methods
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -16,7 +20,7 @@ class NoteForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.onComplete({...this.state})
-    this.setState({title:'', content:''})
+    this.setState(emptyState)
   }
 
   handleChange(e) {
@@ -24,7 +28,14 @@ class NoteForm extends React.Component {
     this.setState({[name]: value})
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.note){
+      this.setState(nextProps.note)
+    }
+  }
+
   render(){
+    let buttonText = this.props.note ? 'update' : 'create'
     return (
       <form
         className='note-form'
@@ -45,7 +56,7 @@ class NoteForm extends React.Component {
           onChange={this.handleChange}
         /> <br />
 
-        <button type='submit'>Create</button>
+        <button type='submit'>{buttonText}</button>
       </form>
     )
   }

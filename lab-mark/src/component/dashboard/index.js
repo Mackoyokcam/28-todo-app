@@ -14,6 +14,7 @@ class Dashboard extends React.Component {
     // Bounded methods
     this.addNote = this.addNote.bind(this)
     this.removeNote = this.removeNote.bind(this)
+    this.updateNote = this.updateNote.bind(this)
   }
 
   addNote(note){
@@ -31,6 +32,12 @@ class Dashboard extends React.Component {
     }))
   }
 
+  updateNote(note) {
+    this.setState(prevState => ({
+      notes: prevState.notes.map(item => item.id === note.id ? note : item),
+    }))
+  }
+
   componentDidUpdate(){
     console.log('__STATE__', this.state)
   }
@@ -42,6 +49,7 @@ class Dashboard extends React.Component {
         <NoteForm onComplete={this.addNote} />
         <NoteList
           removeNote={this.removeNote}
+          updateNote={this.updateNote}
           notes={this.state.notes}
         />
       </div>
