@@ -1,3 +1,4 @@
+import './style.scss'
 import uuid from 'uuid'
 import React from 'react'
 import NoteForm from '../note-form'
@@ -45,13 +46,15 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div className='dashboard'>
-        <h1> Dashboard </h1>
-        <NoteForm onComplete={this.addNote} />
-        <NoteList
-          removeNote={this.removeNote}
-          updateNote={this.updateNote}
-          notes={this.state.notes}
-        />
+        <fieldset>
+          <legend> Dashboard </legend>
+          <NoteForm onComplete={this.addNote} />
+          <NoteList
+            removeNote={this.removeNote}
+            updateNote={this.updateNote}
+            notes={this.state.notes}
+          />
+        </fieldset>
       </div>
     )
   }

@@ -1,3 +1,4 @@
+import './style.scss'
 import React from 'react'
 
 let modalStyles = (props) => ({
@@ -20,10 +21,11 @@ let modalMainStyles = {
 
 class Modal extends React.Component {
   render(){
+    let classString = this.props.show ? 'modal show' : 'modal'
     return (
-      <div style={modalStyles(this.props)} className='modal'>
-        <button onClick={this.props.onClose}> close </button>
-        <main style={modalMainStyles} >
+      <div className={classString}>
+        <button className='close' onClick={this.props.onClose}> </button>
+        <main className='update'>
           {this.props.children}
         </main>
       </div>

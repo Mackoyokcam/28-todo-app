@@ -1,17 +1,16 @@
+import './style.scss'
 import React from 'react'
 import NoteForm from '../note-form'
 import Modal from '../modal'
 
 class NoteItem extends React.Component {
   render(){
-
     let {note, removeNote, updateNote} = this.props
     let showEdit = () => updateNote({...note, editing: true})
     let hideEdit = () => updateNote({...note, editing: false})
     let updateAndClose = (note) => {
       updateNote({...note, editing: false})
     }
-
 
     return (
       <li className='note-item'>
