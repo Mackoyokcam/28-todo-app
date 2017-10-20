@@ -1,3 +1,4 @@
+import './styles.scss'
 import React from 'react'
 import NoteItem from '../note-item'
 
@@ -9,6 +10,7 @@ class NoteList extends React.Component {
           <NoteItem
             note={note}
             removeNote={this.props.removeNote}
+            updateNote={this.props.updateNote}
             key={i}
           />
         )}

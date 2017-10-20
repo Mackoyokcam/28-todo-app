@@ -1,3 +1,4 @@
+import './style.scss'
 import uuid from 'uuid'
 import React from 'react'
 import NoteForm from '../note-form'
@@ -14,6 +15,7 @@ class Dashboard extends React.Component {
     // Bounded methods
     this.addNote = this.addNote.bind(this)
     this.removeNote = this.removeNote.bind(this)
+    this.updateNote = this.updateNote.bind(this)
   }
 
   addNote(note){
@@ -31,6 +33,12 @@ class Dashboard extends React.Component {
     }))
   }
 
+  updateNote(note) {
+    this.setState(prevState => ({
+      notes: prevState.notes.map(item => item.id === note.id ? note : item),
+    }))
+  }
+
   componentDidUpdate(){
     console.log('__STATE__', this.state)
   }
@@ -38,12 +46,15 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div className='dashboard'>
-        <h1> Dashboard </h1>
-        <NoteForm onComplete={this.addNote} />
-        <NoteList
-          removeNote={this.removeNote}
-          notes={this.state.notes}
-        />
+        <fieldset>
+          <legend> Dashboard </legend>
+          <NoteForm onComplete={this.addNote} />
+          <NoteList
+            removeNote={this.removeNote}
+            updateNote={this.updateNote}
+            notes={this.state.notes}
+          />
+        </fieldset>
       </div>
     )
   }

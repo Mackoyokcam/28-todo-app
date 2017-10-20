@@ -39,10 +39,19 @@ App
         * `title`: user provided title
     * It has a bounded removeNote(note) method that removes a note from state.notes based on it's id
   * ##### NoteForm
-    * `onComplete` the NoteForm adds a note to the application state
+    * `onComplete` the NoteForm can either add a note to the application state or update an existing note.
   * ##### NoteList
     * Displays an unordered list of NoteItem components
   * ##### NoteItem
     * Displays the notes content and title
     * Displays a delete button
     * `onClick` the note is removed from the application state
+    * ###### Default view
+      * Displays the note's title, content and a delete button
+    * ###### Edit View
+      * Show the NoteForm and a Cancel Button in a Modal component
+      * onComplete the NoteForm updates the note's title and/or content
+  * ##### Modal
+    * Uses this.props.children to define the content of the modal
+    * Used when updating a NoteItem
+    
