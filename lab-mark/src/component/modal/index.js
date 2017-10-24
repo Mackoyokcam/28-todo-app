@@ -6,7 +6,7 @@ class Modal extends React.Component {
     let classString = this.props.show ? 'modal show' : 'modal'
     return (
       <div className={classString}>
-        <button className='close' onClick={this.props.onClose}> </button>
+        <button className='close' onClick={this.props.onClose}> X </button>
         <main className='update'>
           {this.props.children}
         </main>
