@@ -6,7 +6,12 @@
   "scripts": {
     "watch": "webpack-dev-server --inline --hot",
     "build": "webpack",
-    "test": "jest"
+    "test": "jest -i --coverage"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.*\\.scss$": "./src/random/SCSSStub.js"
+    }
   },
   "keywords": [],
   "author": "",
